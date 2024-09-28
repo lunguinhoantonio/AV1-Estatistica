@@ -1,7 +1,7 @@
 import java.util.*;
 public class Main {
     public static void main(String[] args) {
-        /*A AV1 ainda não foi feita, quando tiver tudo certo, usarei esse algoritmo */
+        // A AV1 ainda não foi feita, quando tiver tudo certo, usarei esse algoritmo
         int[] idades =
         {45, 54, 21, 16, 32, 32, 43, 21, 22, 18,
          19, 18, 54, 68, 28, 26, 25, 16, 19, 20,
@@ -10,13 +10,39 @@ public class Main {
          37, 67, 48, 52, 49, 44, 22, 45, 32, 37,
          53, 25, 29, 31, 73, 65, 59, 41, 20, 30
         };
+
         // MÉDIA ARITMÉTICA
+
         double somaIdades = 0.0;
         for (Integer idade : idades) {
             somaIdades += idade;
         }
         double mediaArith = somaIdades / idades.length;
         System.out.printf("A média aritmética das idades é %.2f\n", mediaArith);
+
+        // MODA
+
+        Map<Integer, Integer> count = new TreeMap<>();
+        int maior = 0;
+        for (int num : idades) {
+            // Se uma idade não existe no Map, ela é adicionado com o valor inicial de 0
+            if (!count.containsKey(num)) {
+                count.put(num, 0);
+            }
+            // Pega a frequência associado ao número adicionado anteriormente e incrementa 1
+            int total = count.get(num) + 1;
+            // Atualiza a frequência da idade no mapa
+            count.put(num, total);
+            // Verifica se a frequência de num, que tá armazenada em total, é maior que o valor de maior
+            if (maior < total) {
+                maior = total;
+            }
+        }
+        for (Map.Entry<Integer, Integer> counts : count.entrySet()) {
+            if (counts.getValue() == maior) {
+                System.out.printf("Moda: %d, aparecendo %d vezes\n", counts.getKey(), maior);
+            }
+        }
 
 
     }
