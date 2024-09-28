@@ -14,10 +14,11 @@ public class Main {
         // MÉDIA ARITMÉTICA
 
         double somaIdades = 0.0;
+        int totalIdades = idades.length;
         for (Integer idade : idades) {
             somaIdades += idade;
         }
-        double mediaArith = somaIdades / idades.length;
+        double mediaArith = somaIdades / totalIdades;
         System.out.printf("A média aritmética das idades é %.2f\n", mediaArith);
 
         // MODA
@@ -43,6 +44,19 @@ public class Main {
                 System.out.printf("Moda: %d, aparecendo %d vezes\n", counts.getKey(), maior);
             }
         }
+
+        // MEDIANA
+
+        int[] toCalcMediana = idades.clone();
+        double mediana;
+        Arrays.sort(toCalcMediana);
+
+        int meio1 = toCalcMediana[(totalIdades / 2) - 1];
+        int meio2 = toCalcMediana[totalIdades / 2];
+        mediana = (meio1 + meio2) / 2.0;
+        System.out.printf("Mediana: %.2f\n", mediana);
+
+
 
 
     }
