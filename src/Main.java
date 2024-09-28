@@ -56,8 +56,18 @@ public class Main {
         mediana = (meio1 + meio2) / 2.0;
         System.out.printf("Mediana: %.2f\n", mediana);
 
+        // FREQUÊNCIA ABSOLUTA
 
+        Map<Integer, Integer> frequencia = new TreeMap<>();
 
+        for (int idade : idades) {
+            frequencia.put(idade, frequencia.getOrDefault(idade, 0) + 1);
+        }
+
+        System.out.println("Frequência de cada idade:");
+        for (Map.Entry<Integer, Integer> entry : frequencia.entrySet()) {
+            System.out.printf("Idade: %d, Frequência: %d\n", entry.getKey(), entry.getValue());
+        }
 
     }
 }
