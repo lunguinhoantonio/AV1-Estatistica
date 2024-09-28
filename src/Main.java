@@ -68,6 +68,23 @@ public class Main {
         for (Map.Entry<Integer, Integer> entry : frequencia.entrySet()) {
             System.out.printf("Idade: %d, Frequência: %d\n", entry.getKey(), entry.getValue());
         }
+        System.out.println("-------------------------------------");
+
+        // FREQUÊNCIA ACUMULADA
+
+        int acumulada = 0;
+        Map<Integer, Integer> frequenciaAcumulada = new TreeMap<>();
+
+        for (Map.Entry<Integer, Integer> entry : frequencia.entrySet()) {
+            acumulada += entry.getValue();
+            frequenciaAcumulada.put(entry.getKey(), acumulada);
+        }
+
+        System.out.println("Frequência acumulada:");
+        for (Map.Entry<Integer, Integer> entry : frequenciaAcumulada.entrySet()) {
+            System.out.printf("Idade: %d, Frequência Acumulada: %d\n", entry.getKey(), entry.getValue());
+        }
+
 
     }
 }
