@@ -63,28 +63,44 @@ public class Main {
         for (int idade : idades) {
             frequencia.put(idade, frequencia.getOrDefault(idade, 0) + 1);
         }
-
+        System.out.println("-------------------------------------");
         System.out.println("Frequência de cada idade:");
         for (Map.Entry<Integer, Integer> entry : frequencia.entrySet()) {
-            System.out.printf("Idade: %d, Frequência: %d\n", entry.getKey(), entry.getValue());
+            System.out.printf("Idade: %d, Freq Absoluta: %d\n", entry.getKey(), entry.getValue());
         }
         System.out.println("-------------------------------------");
 
-        // FREQUÊNCIA ACUMULADA
+        // FREQUÊNCIA ABSOLUTA ACUMULADA
 
-        int acumulada = 0;
+        int frAbsAc = 0;
         Map<Integer, Integer> frequenciaAcumulada = new TreeMap<>();
 
         for (Map.Entry<Integer, Integer> entry : frequencia.entrySet()) {
-            acumulada += entry.getValue();
-            frequenciaAcumulada.put(entry.getKey(), acumulada);
+            frAbsAc += entry.getValue();
+            frequenciaAcumulada.put(entry.getKey(), frAbsAc);
         }
 
         System.out.println("Frequência acumulada:");
         for (Map.Entry<Integer, Integer> entry : frequenciaAcumulada.entrySet()) {
-            System.out.printf("Idade: %d, Frequência Acumulada: %d\n", entry.getKey(), entry.getValue());
+            System.out.printf("Idade: %d, Freq Acumulada: %d\n", entry.getKey(), entry.getValue());
         }
+        System.out.println("-------------------------------------");
 
+        // FREQUÊNCIA RELATIVA
+
+        for (Map.Entry<Integer, Integer> entry : frequencia.entrySet()) {
+            double frequenciaRelativa = (double) entry.getValue() / totalIdades;
+            System.out.printf("Idade: %d, Freq Relativa: %.4f\n", entry.getKey(), frequenciaRelativa);
+        }
+        System.out.println("-------------------------------------");
+
+        // FREQUÊNCIA RELATIVA (%)
+
+        for (Map.Entry<Integer, Integer> entry : frequencia.entrySet()) {
+            double frequenciaRelativa = (double) entry.getValue() / totalIdades * 100;
+            System.out.printf("Idade: %d, Freq Relativa(%%): %.2f%%\n", entry.getKey(), frequenciaRelativa);
+        }
+        System.out.println("-------------------------------------");
 
     }
 }
